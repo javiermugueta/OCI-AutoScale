@@ -44,14 +44,14 @@ AnyDay = "AnyDay"
 Weekend = "Weekend"
 WeekDay = "WeekDay"
 DayOfMonth = "DayOfMonth"
-Version = "2022.11.05"
+Version = "2023.04.07"
 
 # ============== CONFIGURE THIS SECTION ======================
 # OCI Configuration
 # ============================================================
 
 ComputeShutdownMethod = "SOFTSTOP"
-LogLevel = "ALL"  # Use ALL or ERRORS. When set to ERRORS only a notification will be published if error occurs
+LogLevel = "ERRORS"  # Use ALL or ERRORS. When set to ERRORS only a notification will be published if error occurs
 
 AlternativeWeekend = False  # Set to True is your weekend is Friday/Saturday
 RateLimitDelay = 2  # Time in seconds to wait before retry of operation
@@ -1700,6 +1700,7 @@ if cmd.log:
 
     putlogdetails = oci.loggingingestion.models.PutLogsDetails()
     putlogdetails.specversion = "1.0"
+    print(putlogdetails)
     putlogdetails.log_entry_batches = [logdetails]
 
     result = logingest.put_logs(log_id=cmd.log, put_logs_details=putlogdetails)

@@ -1689,6 +1689,7 @@ if cmd.topic:
 MakeLog("All scaling tasks done, checked {} resources.".format(total_resources))
 
 if cmd.log:
+    print("Sending logs to OCI Logging...")
     config['region'] = tenancy_home_region
     signer.region = tenancy_home_region
     logingest = oci.loggingingestion.LoggingClient(config, signer=signer)

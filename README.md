@@ -164,8 +164,8 @@ crontab -e
 ```
 
 ```
-57 * * * * python3 /home/opc/OCI-AutoScale/AutoScaleALL.py -a Down -printocid -tag Schedule  -topic ocid1.onstopic.oc1.eu-madrid-1.aaaaaaaaobhrwzowhv47l52qz2wmfognb4sqwhrp45wfom654itupuwbzeyq >> /home/opc/automation.log 2>&1
-01 * * * * python3 /home/opc/OCI-AutoScale/AutoScaleALL.py -a Up -printocid -tag Schedule  -topic ocid1.onstopic.oc1.eu-madrid-1.aaaaaaaaobhrwzowhv47l52qz2wmfognb4sqwhrp45wfom654itupuwbzeyq /home/opc/automation.log 2>&1
+57 * * * * python3 /home/opc/OCI-AutoScale/AutoScaleALL.py -a Down -ip -printocid -tag Schedule  -topic ocid1.onstopic.oc1.eu-madrid-1.aaaaaaaaobhrwzowhv47l52qz2wmfognb4sqwhrp45wfom654itupuwbzeyq -log ocid1.log.oc1.eu-madrid-1.amaaaaaaijaigyiae6mfocrehdcxmnmfvwcavei4ywyqu452o5hym2cpetlq  >> /home/opc/automation.log 2>&1
+01 * * * * python3 /home/opc/OCI-AutoScale/AutoScaleALL.py -a Up -ip -printocid -tag Schedule  -topic ocid1.onstopic.oc1.eu-madrid-1.aaaaaaaaobhrwzowhv47l52qz2wmfognb4sqwhrp45wfom654itupuwbzeyq -log ocid1.log.oc1.eu-madrid-1.amaaaaaaijaigyiae6mfocrehdcxmnmfvwcavei4ywyqu452o5hym2cpetlq  >> /home/opc/automation.log 2>&1
 ```
 
 ## Disclaimer

@@ -1784,7 +1784,8 @@ if cmd.log:
 #
 if cmd.dailyrepo:
     MakeLog("Daily repo at " + cmd.dailyrepo)
-    the_hour = time.strftime("%H")
+    the_hour = time.strftime("%HH")
+    print(the_hour)
     if the_hour == cmd.dailyrepo:
         print("xxxxxxxxxxxx")
     

@@ -73,9 +73,9 @@ def print_header(name):
     MakeLog('*' * chars)
 
 ##########################################################################
-# Print header 2
+# Print header two
 ##########################################################################
-def print_header2(name):
+def print_header_two(name):
     chars = int(90)
     MakeLog("")
     MakeLog('.' * chars)
@@ -1677,7 +1677,7 @@ for region_name in [str(es.region_name) for es in regions]:
         if cmd.filter_region not in region_name:
             continue
 
-    print_header2("Region " + region_name)
+    print_header_two("Region " + region_name)
 
     # set the region in the config and signer
     config['region'] = region_name

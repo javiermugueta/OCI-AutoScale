@@ -414,7 +414,7 @@ def autoscale_region(region):
     sdetails = oci.resource_search.models.StructuredSearchDetails()
     sdetails.query = query
     
-    Makelog('\033[0;31;40m' + query)
+    MakeLog('\033[0;31;40m' + query)
 
     NoError = True
 

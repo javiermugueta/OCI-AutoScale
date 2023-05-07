@@ -68,9 +68,9 @@ current_utc_time = datetime.datetime.utcnow()
 def print_header(name):
     chars = int(90)
     MakeLog("")
-    MakeLog('#' * chars)
-    MakeLog("#" + name.center(chars - 2, " ") + "#")
-    MakeLog('#' * chars)
+    MakeLog('*' * chars)
+    MakeLog("*" + name.center(chars - 2, " ") + "*")
+    MakeLog('*' * chars)
 
 
 
@@ -183,9 +183,6 @@ class AutonomousThread(threading.Thread):
         global success
 
         MakeLog(" - Starting Autonomous DB {} and after that scaling to {} cpus".format(self.NAME, self.CPU))
-        if cmd.action == "Down":
-            MakeLog('\033[0;31;40 mEsperando 300 segundos...')
-            time.sleep(300)
         Retry = True
         while Retry:
             try:

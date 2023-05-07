@@ -1708,7 +1708,6 @@ for region_name in [str(es.region_name) for es in regions]:
 # Send summary if Topic Specified
 ############################################
 if cmd.topic:
-
     # set the home region in the config and signer
     config['region'] = tenancy_home_region
     signer.region = tenancy_home_region
@@ -1716,6 +1715,7 @@ if cmd.topic:
     ns = oci.ons.NotificationDataPlaneClient(config, signer=signer)
 
     if LogLevel == "ALL" or (LogLevel == "ERRORS" and ErrorsFound):
+        MakeLog("Sending notifications to OCI Notifications...")
         MakeLog("\nPublishing notification")
         body_message = "Scaling ({}) just completed. Found {} errors across {} scaleable instances (from a total of {} instances). \nError Details: {}\n\nSuccess Details: {}".format(Action, len(errors), len(success), total_resources, errors, success)
         Retry = True

@@ -51,7 +51,7 @@ Version = "2023.04.07"
 # ============================================================
 
 ComputeShutdownMethod = "SOFTSTOP"
-LogLevel = "ERRORS"  # Use ALL or ERRORS. When set to ERRORS only a notification will be published if error occurs
+LogLevel = "ALL"  # Use ALL or ERRORS. When set to ERRORS only a notification will be published if error occurs
 
 AlternativeWeekend = False  # Set to True is your weekend is Friday/Saturday
 RateLimitDelay = 2  # Time in seconds to wait before retry of operation
@@ -1555,6 +1555,7 @@ parser.add_argument('-ignoremysql', action='store_true', default=False, dest='ig
 parser.add_argument('-printocid', action='store_true', default=False, dest='print_ocid', help='Print OCID for resources')
 parser.add_argument('-topic', default="", dest='topic', help='Topic OCID to send summary in home region')
 parser.add_argument('-log', default="", dest='log', help='Log OCID to send log output to')
+parser.add_argument('-loglevel', default="ERRORS", dest='LogLevel', help='Log level [ALL | ERRORS] ')
 
 cmd = parser.parse_args()
 if cmd.action != "All" and cmd.action != "Down" and cmd.action != "Up":
@@ -1731,8 +1732,6 @@ if cmd.topic:
                 else:
                     MakeLog("Error ({}) publishing notification - {}".format(ns_response.status, ns_response.message))
                     Retry = False
-    else:
-        MakeLog("No notifications to send, ...")
 
 MakeLog("All scaling tasks done, checked {} resources.".format(total_resources))
 

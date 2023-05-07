@@ -1556,7 +1556,7 @@ parser.add_argument('-ignoremysql', action='store_true', default=False, dest='ig
 parser.add_argument('-printocid', action='store_true', default=False, dest='print_ocid', help='Print OCID for resources')
 parser.add_argument('-topic', default="", dest='topic', help='Topic OCID to send summary in home region')
 parser.add_argument('-log', default="", dest='log', help='Log OCID to send log output to')
-parser.add_argument('-loglevel', default="ERRORS", dest='LogLevel', help='Log level [ALL | ERRORS] ')
+parser.add_argument('-loglevel', default="ERRORS", dest='loglevel', help='Log level [ALL | ERRORS] ')
 
 cmd = parser.parse_args()
 if cmd.action != "All" and cmd.action != "Down" and cmd.action != "Up":

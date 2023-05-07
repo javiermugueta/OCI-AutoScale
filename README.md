@@ -10,7 +10,7 @@ The **AutoScaleALL** script: A single Auto Scaling script for all OCI resources 
 - Only sends notifications when errors happen
 - Missing flags in this readme (-log)
 - Output in green colour
-- Database resources are started before others in Up action (reverse in Down action)
+- Database resources are queried before others in Up action (reverse in Down action)
 - loglevel by command line ALL or ERRORS(default)
 
 # NEW 

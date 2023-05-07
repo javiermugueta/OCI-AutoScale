@@ -1755,10 +1755,17 @@ if cmd.log:
     #
     # hitting oci.exceptions.ServiceError: {'target_service': 'logging', 'status': 400, 'code': 'InvalidParameter', 'opc-request-id': '...', 'message': 'java.lang.IllegalArgumentException: String index out of range: 0'
     #
+    Z = logdetails.entries
     logdetails.entries = []
-    temp = logdetails.entries[0:9999]
-    logdetails.entries = temp
+    for x in Z:
+        if x.data != "" :
+            logdetails.entries.append(logdetail)
+            logdetail = oci.loggingingestion.models.LogEntry()
+            logdetail.id = datetime.datetime.now(datetime.timezone.utc).isoformat()
+            logdetail.data = x.data
+            logdetail.time = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    #
     putlogdetails.log_entry_batches = [logdetails]
-
+    # 
     result = logingest.put_logs(log_id=cmd.log, put_logs_details=putlogdetails)
 

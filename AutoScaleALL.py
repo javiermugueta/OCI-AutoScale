@@ -22,6 +22,7 @@
 #   -printocid - print ocid of object
 #   -topic     - topic to sent summary
 #   -log       - send log output to OCI Logging service. Specify the Log OCID
+#   -loglevel  - LogLevel by command line
 #   -h         - help
 #
 #################################################################################################################
@@ -51,7 +52,7 @@ Version = "2023.04.07"
 # ============================================================
 
 ComputeShutdownMethod = "SOFTSTOP"
-#LogLevel = ""  # Use ALL or ERRORS. When set to ERRORS only a notification will be published if error occurs
+LogLevel = ""  # Use ALL or ERRORS. When set to ERRORS only a notification will be published if error occurs
 
 AlternativeWeekend = False  # Set to True is your weekend is Friday/Saturday
 RateLimitDelay = 2  # Time in seconds to wait before retry of operation
@@ -1602,7 +1603,10 @@ try:
     MakeLog("Home Region   : " + tenancy_home_region)
     MakeLog("Action        : " + Action)
     MakeLog("Tag           : " + PredefinedTag)
-    MakeLog("Log Level     : " + LogLevel)
+    
+    if cmd.loglevel:
+        LogLevel = cmd.loglevel
+        MakeLog("Log Level     : " + LogLevel)
 
     if cmd.topic:
         MakeLog("Topic         : " + cmd.topic)

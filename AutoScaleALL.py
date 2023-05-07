@@ -1787,12 +1787,12 @@ if cmd.log:
 #
 # dailyrepo
 #
-if cmd.dailyrepo_m | cmd.dailyrepo_n:
+if cmd.dailyrepo_m or cmd.dailyrepo_n:
     MakeLog("Daily repo is set at " + cmd.dailyrepo_m)
     MakeLog("Daily repo is set at " + cmd.dailyrepo_n)
     the_hour = time.strftime("%HH")
     print(the_hour)
-    if the_hour == cmd.dailyrepo_n | the_hour == cmd.dailyrepo_m:
+    if the_hour == cmd.dailyrepo_n or the_hour == cmd.dailyrepo_m:
         MakeLog("It's the time for a daily repo")
         Z = logdetails.entries
         logdetails.entries = []

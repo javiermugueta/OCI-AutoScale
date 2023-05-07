@@ -12,6 +12,7 @@ The **AutoScaleALL** script: A single Auto Scaling script for all OCI resources 
 - Output in green colour
 - Database resources are queried before others in Up action (reverse in Down action)
 - loglevel by command line ALL or ERRORS(default)
+- Daily reports 2 settings, topically morning night
 
 # NEW 
 - Support for changing the CPU and Memory Count for Compute Flex Shapes (WILL REBOOT THE INSTANCE!!)
@@ -21,23 +22,23 @@ The **AutoScaleALL** script: A single Auto Scaling script for all OCI resources 
 - Added flags as parameters for execution:
 
 ```
-  -h, --help            show this help message and exit
-  -t CONFIG_PROFILE     Config file section to use (tenancy profile)
-  -ip                   Use Instance Principals for Authentication
-  -dt                   Use Delegation Token for Authentication
-  -a ACTION             Action All, Down, Up
-  -tag TAG              Tag to examine, Default=Schedule
-  -rg FILTER_REGION     Filter Region
-  -ic COMPARTMENT_INCLUDE
-                        Include Compartment OCID
-  -ec COMPARTMENT_EXCLUDE
-                        Exclude Compartment OCID
-  -ignrtime             Ignore Region Time - Use Host Time
-  -ignoremysql          Ignore MYSQL processing
-  -printocid            Print OCID for resources
-  -topic TOPIC          Topic OCID to send summary in home region
-  -log LOG              Log OCID to send log output to
-  -loglevel             ALL or ERRORS
+   -t config       - Config file section to use (tenancy profile)
+   -ip             - Use Instance Principals for Authentication
+   -dt             - Use Instance Principals with delegation token for cloud shell
+   -a              - Action - All,Up,Down
+   -tag            - Tag - Default Schedule
+   -rg             - Filter on Region
+   -ic             - include compartment ocid
+   -ec             - exclude compartment ocid
+   -ignrtime       - ignore region time zone
+   -ignormysql     - ignore mysql execution
+   -printocid      - print ocid of object
+   -topic          - topic to sent summary
+   -log            - send log output to OCI Logging service. Specify the Log OCID
+   -loglevel       - LogLevel by command line
+   -dailyrepo_n    - Send daily repo via notifications at xxH hours (default -dailyrepo_n 21H)
+   -dailyrepo_m    - Send daily repo via notifications at xxH hours (default -dailyrepo_m 09H)
+   -h              - help
 ```
 
 - Support for MySQL service added
@@ -166,8 +167,8 @@ crontab -e
 ```
 
 ```
-57 * * * * python3 /home/opc/OCI-AutoScale/AutoScaleALL.py -a Down -ip -printocid -tag Schedule  -topic ocid1.onstopic.oc1.eu-madrid-1.aaaaaaaaobhrwzowhv47l52qz2wmfognb4sqwhrp45wfom654itupuwbzeyq -log ocid1.log.oc1.eu-madrid-1.amaaaaaaijaigyiae6mfocrehdcxmnmfvwcavei4ywyqu452o5hym2cpetlq  >> /home/opc/automation.log 2>&1
-01 * * * * python3 /home/opc/OCI-AutoScale/AutoScaleALL.py -a Up -ip -printocid -tag Schedule  -topic ocid1.onstopic.oc1.eu-madrid-1.aaaaaaaaobhrwzowhv47l52qz2wmfognb4sqwhrp45wfom654itupuwbzeyq -log ocid1.log.oc1.eu-madrid-1.amaaaaaaijaigyiae6mfocrehdcxmnmfvwcavei4ywyqu452o5hym2cpetlq  >> /home/opc/automation.log 2>&1
+57 * * * * python3 /home/opc/OCI-AutoScale/AutoScaleALL.py -a Down -printocid -tag Schedule  -topic ocid1.onstopic.oc1.eu-madrid-1.aaaaaaaaobhrwzowhv47l52qz2wmfognb4sqwhrp45wfom654itupuwbzeyq -log ocid1.log.oc1.eu-madrid-1.amaaaaaaijaigyiaaaannvez4ayvm7hqodnk2kfar7ewpegxwuiiqh3ashga-dailyrepo_n 22H -dailyrepo_m 09H  >> /home/opc/automation.log 2>&1
+01 * * * * python3 /home/opc/OCI-AutoScale/AutoScaleALL.py -a Up -printocid -tag Schedule  -topic ocid1.onstopic.oc1.eu-madrid-1.aaaaaaaaobhrwzowhv47l52qz2wmfognb4sqwhrp45wfom654itupuwbzeyq -log ocid1.log.oc1.eu-madrid-1.amaaaaaaijaigyiaaaannvez4ayvm7hqodnk2kfar7ewpegxwuiiqh3ashga -dailyrepo_n 22H -dailyrepo_m 09H  >> /home/opc/automation.log 2>&1
 ```
 
 ## Disclaimer

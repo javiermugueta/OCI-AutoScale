@@ -24,6 +24,7 @@
 #   -topic     - topic to sent summary
 #   -log       - send log output to OCI Logging service. Specify the Log OCID
 #   -loglevel  - LogLevel by command line
+#   -dailyrepo - Send daily repo via notifications at HH:mm
 #   -h         - help
 #
 #################################################################################################################
@@ -1558,6 +1559,7 @@ parser.add_argument('-printocid', action='store_true', default=False, dest='prin
 parser.add_argument('-topic', default="", dest='topic', help='Topic OCID to send summary in home region')
 parser.add_argument('-log', default="", dest='log', help='Log OCID to send log output to')
 parser.add_argument('-loglevel', default="ERRORS", dest='log_level', help='Log level [ALL | ERRORS] ')
+parser.add_argument('-dailyrepo', default="21:00", dest='dailyrepo', help='Send daily repo via notifications at HH:mm ')
 
 cmd = parser.parse_args()
 if cmd.action != "All" and cmd.action != "Down" and cmd.action != "Up":
@@ -1611,6 +1613,10 @@ try:
 
     if cmd.topic:
         MakeLog("Topic         : " + cmd.topic)
+    
+    if cmd.dailyrepo:
+        MakeLog("Daily repo    : " + cmd.dailyrepo)
+   
     if cmd.filter_region:
         MakeLog("Filter Region : " + cmd.filter_region)
 
@@ -1741,6 +1747,9 @@ if cmd.topic:
 
 MakeLog("All scaling tasks done, checked {} resources.".format(total_resources))
 
+#
+# log
+#
 if cmd.log:
     print("Sending logs to OCI Logging...")
     config['region'] = tenancy_home_region
@@ -1770,4 +1779,9 @@ if cmd.log:
     putlogdetails.log_entry_batches = [logdetails]
     # 
     result = logingest.put_logs(log_id=cmd.log, put_logs_details=putlogdetails)
-
+#
+# dailyrepo
+#
+if cmd.dailyrepo:
+    MakeLog("Daily repo at " + cmd.dailyrepo)
+    

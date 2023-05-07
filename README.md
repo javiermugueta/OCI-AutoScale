@@ -8,6 +8,7 @@ The **AutoScaleALL** script: A single Auto Scaling script for all OCI resources 
 
 - Tested for OCI Logging and OCI Notifications
 - Only sends notifications when errors happen
+- Missing flags in this readme (-log)
 
 # NEW 
 - Support for changing the CPU and Memory Count for Compute Flex Shapes (WILL REBOOT THE INSTANCE!!)
@@ -17,18 +18,22 @@ The **AutoScaleALL** script: A single Auto Scaling script for all OCI resources 
 - Added flags as parameters for execution:
 
 ```
-   -t config  - Config file section to use (tenancy profile)
-   -ip        - Use Instance Principals for Authentication
-   -dt        - Use Instance Principals with delegation token for cloud shell
-   -a         - Action - All,Up,Down (Default All)
-   -tag       - Tag to use (Default Schedule)
-   -rg        - Filter on Region
-   -ic        - include compartment ocid
-   -ec        - exclude compartment ocid
-   -ignrtime  - ignore region time zone (Use host time)
-   -printocid - print ocid of resource
-   -topic     - topic OCID to sent summary (in home region)
-   -h         - help
+  -h, --help            show this help message and exit
+  -t CONFIG_PROFILE     Config file section to use (tenancy profile)
+  -ip                   Use Instance Principals for Authentication
+  -dt                   Use Delegation Token for Authentication
+  -a ACTION             Action All, Down, Up
+  -tag TAG              Tag to examine, Default=Schedule
+  -rg FILTER_REGION     Filter Region
+  -ic COMPARTMENT_INCLUDE
+                        Include Compartment OCID
+  -ec COMPARTMENT_EXCLUDE
+                        Exclude Compartment OCID
+  -ignrtime             Ignore Region Time - Use Host Time
+  -ignoremysql          Ignore MYSQL processing
+  -printocid            Print OCID for resources
+  -topic TOPIC          Topic OCID to send summary in home region
+  -log LOG              Log OCID to send log output to
 ```
 
 - Support for MySQL service added

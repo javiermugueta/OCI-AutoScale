@@ -1759,11 +1759,12 @@ if cmd.log:
     logdetails.entries = []
     for x in Z:
         if x.data != "" :
-            logdetails.entries.append(logdetail)
             logdetail = oci.loggingingestion.models.LogEntry()
             logdetail.id = datetime.datetime.now(datetime.timezone.utc).isoformat()
             logdetail.data = x.data
             logdetail.time = datetime.datetime.now(datetime.timezone.utc).isoformat()
+            logdetails.entries.append(logdetail)
+
     #
     putlogdetails.log_entry_batches = [logdetails]
     # 

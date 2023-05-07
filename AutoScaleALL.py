@@ -51,7 +51,7 @@ Version = "2023.04.07"
 # ============================================================
 
 ComputeShutdownMethod = "SOFTSTOP"
-LogLevel = ""  # Use ALL or ERRORS. When set to ERRORS only a notification will be published if error occurs
+#LogLevel = ""  # Use ALL or ERRORS. When set to ERRORS only a notification will be published if error occurs
 
 AlternativeWeekend = False  # Set to True is your weekend is Friday/Saturday
 RateLimitDelay = 2  # Time in seconds to wait before retry of operation

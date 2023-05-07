@@ -146,5 +146,15 @@ To ensure the script runs as fast as possible, all blocking operations (power on
 
 You can deploy this script anywhere you like as long as the location has internet access to the OCI API services. 
 
+# crontab example
+```
+crontab -e
+```
+
+```
+57 * * * * python3 /home/opc/OCI-AutoScale/AutoScaleALL.py -a Down -printocid -tag Schedule  -topic ocid1.onstopic.oc1.eu-madrid-1.aaaaaaaaobhrwzowhv47l52qz2wmfognb4sqwhrp45wfom654itupuwbzeyq >> /home/opc/automation.log 2>&1
+01 * * * * python3 /home/opc/OCI-AutoScale/AutoScaleALL.py -a Up -printocid -tag Schedule  -topic ocid1.onstopic.oc1.eu-madrid-1.aaaaaaaaobhrwzowhv47l52qz2wmfognb4sqwhrp45wfom654itupuwbzeyq /home/opc/automation.log 2>&1
+```
+
 ## Disclaimer
 **Please test properly on test resources, before using it on production resources to prevent unwanted outages or very expensive bills.**

@@ -1802,7 +1802,7 @@ if cmd.dailyrepo:
         Retry = True
         while Retry:
             try:
-                ns_response = ns.publish_message(cmd.topic, {"title": "Scaling Script ran across tenancy: {}".format(tenancy.name), "body": body_message})
+                ns_response = ns.publish_message(cmd.topic, {"title": "Auto scaling daily repo".format(tenancy.name), "body": body_message})
                 Retry = False
             except oci.exceptions.ServiceError as ns_response:
                 if ns_response.status == 429:

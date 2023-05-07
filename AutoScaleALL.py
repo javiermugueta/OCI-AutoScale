@@ -1793,7 +1793,7 @@ if cmd.dailyrepo:
         body_message = ""
         for x in Z:
             if x.data != "" :
-                if x.data[=:7] == "Checking":
+                if x.data[0:7] == "Checking":
                     body_message = body_message + x.data + "\n"
             #    
         config['region'] = tenancy_home_region

@@ -7,7 +7,7 @@ The **AutoScaleALL** script: A single Auto Scaling script for all OCI resources 
 # Changes in this fork
 
 - Tested for OCI Logging and OCI Notifications
-- Only sends notifications when errors happen
+- Default loglevel to ERRORS, therefore only sends notifications(if notifications enabled -recommended-) when errors happen
 - Missing flags in this readme (-log)
 - Output in green colour
 - Database resources are queried before others in Up action (reverse in Down action)

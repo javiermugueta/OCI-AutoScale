@@ -183,6 +183,9 @@ class AutonomousThread(threading.Thread):
         global success
 
         MakeLog(" - Starting Autonomous DB {} and after that scaling to {} cpus".format(self.NAME, self.CPU))
+        if cmd.action == "Down":
+            MakeLog('\033[0;31;40 mEsperando 300 segundos...')
+            time.sleep(300)
         Retry = True
         while Retry:
             try:

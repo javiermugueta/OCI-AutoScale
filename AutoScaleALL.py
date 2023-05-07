@@ -1731,6 +1731,8 @@ if cmd.topic:
                 else:
                     MakeLog("Error ({}) publishing notification - {}".format(ns_response.status, ns_response.message))
                     Retry = False
+    else:
+        MakeLog("No notifications to send, ...")
 
 MakeLog("All scaling tasks done, checked {} resources.".format(total_resources))
 

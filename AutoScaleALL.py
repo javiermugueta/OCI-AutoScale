@@ -405,11 +405,16 @@ def autoscale_region(region):
     # Find all resources with a Schedule Tag
     ###############################################
     MakeLog("Getting all resources supported by the search function...")
-    query = "query {} resources where (definedTags.namespace = '{}')".format(', '.join(supported_resources), PredefinedTag)
+    if cmd.action == "Up":
+        query = "query {} resources where (definedTags.namespace = '{}')".format(', '.join(supported_resources_up), PredefinedTag)
+    if cmd.action == "Down":
+        query = "query {} resources where (definedTags.namespace = '{}')".format(', '.join(supported_resources_down), PredefinedTag)
     query += " && compartmentId  = '" + compartment_include + "'" if compartment_include else ""
     query += " && compartmentId != '" + compartment_exclude + "'" if compartment_exclude else ""
     sdetails = oci.resource_search.models.StructuredSearchDetails()
     sdetails.query = query
+    
+    Makelog('\033[0;31;40m' + query)
 
     NoError = True
 

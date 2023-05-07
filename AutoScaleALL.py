@@ -413,8 +413,8 @@ def autoscale_region(region):
     query += " && compartmentId != '" + compartment_exclude + "'" if compartment_exclude else ""
     sdetails = oci.resource_search.models.StructuredSearchDetails()
     sdetails.query = query
-    
-    MakeLog('\033[0;31;40m' + query)
+    # '\033[0;31;40m' + 
+    MakeLog(query)
 
     NoError = True
 

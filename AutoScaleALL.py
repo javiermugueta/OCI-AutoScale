@@ -1798,7 +1798,6 @@ if cmd.dailyrepo:
         config['region'] = tenancy_home_region
         signer.region = tenancy_home_region
         ns = oci.ons.NotificationDataPlaneClient(config, signer=signer)
-        print(body_message)
         Retry = True
         while Retry:
             try:

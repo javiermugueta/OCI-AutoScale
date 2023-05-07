@@ -1622,6 +1622,38 @@ supported_resources = [
         "visualbuilderinstance"
         ]
 
+supported_resources_down = [
+        "instance",
+        "instancepool",
+        "vmcluster",
+        "odainstance",
+        "analyticsinstance",
+        "integrationinstance",
+        "loadbalancer",
+        "goldengatedeployment",
+        "disworkspace",
+        "visualbuilderinstance",
+        "dbsystem",
+        "autonomousdatabase",
+        "cloudexadatainfrastructure"
+        ]
+
+supported_resources_up = [
+        "dbsystem",
+        "autonomousdatabase",
+        "cloudexadatainfrastructure",
+        "instance",
+        "instancepool",
+        "vmcluster",
+        "odainstance",
+        "analyticsinstance",
+        "integrationinstance",
+        "loadbalancer",
+        "goldengatedeployment",
+        "disworkspace",
+        "visualbuilderinstance"
+        ]
+
 ############################################
 # Loop on all regions
 ############################################

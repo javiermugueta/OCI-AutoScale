@@ -24,7 +24,7 @@
 #   -topic     - topic to sent summary
 #   -log       - send log output to OCI Logging service. Specify the Log OCID
 #   -loglevel  - LogLevel by command line
-#   -dailyrepo - Send daily repo via notifications at HH hours
+#   -dailyrepo - Send daily repo via notifications at xxH hours (default -dailyrepo 21H)
 #   -h         - help
 #
 #################################################################################################################
@@ -1559,7 +1559,7 @@ parser.add_argument('-printocid', action='store_true', default=False, dest='prin
 parser.add_argument('-topic', default="", dest='topic', help='Topic OCID to send summary in home region')
 parser.add_argument('-log', default="", dest='log', help='Log OCID to send log output to')
 parser.add_argument('-loglevel', default="ERRORS", dest='log_level', help='Log level [ALL | ERRORS] ')
-parser.add_argument('-dailyrepo', default="21", dest='dailyrepo', help='Send daily repo via notifications at HH hours (default 21)')
+parser.add_argument('-dailyrepo', default="21H", dest='dailyrepo', help='Send daily repo via notifications at xxH hours (default -dailyrepo 21H)')
 
 cmd = parser.parse_args()
 if cmd.action != "All" and cmd.action != "Down" and cmd.action != "Up":

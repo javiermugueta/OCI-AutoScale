@@ -1700,7 +1700,12 @@ if cmd.log:
 
     putlogdetails = oci.loggingingestion.models.PutLogsDetails()
     putlogdetails.specversion = "1.0"
-    print(putlogdetails)
+    #
+    # hitting oci.exceptions.ServiceError: {'target_service': 'logging', 'status': 400, 'code': 'InvalidParameter', 'opc-request-id': '...', 'message': 'java.lang.IllegalArgumentException: String index out of range: 0'
+    #
+    logdetails.entries = []
+    xx = logdetails.entries[1:1000]
+    logdetails.entries = xx
     putlogdetails.log_entry_batches = [logdetails]
 
     result = logingest.put_logs(log_id=cmd.log, put_logs_details=putlogdetails)

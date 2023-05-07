@@ -1783,10 +1783,10 @@ if cmd.log:
 # dailyrepo
 #
 if cmd.dailyrepo:
-    MakeLog("Daily repo at " + cmd.dailyrepo)
+    MakeLog("Daily repo is set at " + cmd.dailyrepo)
     the_hour = time.strftime("%HH")
-    print(the_hour)
     if the_hour == cmd.dailyrepo:
+        MakeLog("It's the time for the daily repo")
         Z = logdetails.entries
         logdetails.entries = []
         body_message = ""

@@ -1787,13 +1787,12 @@ if cmd.dailyrepo:
     the_hour = time.strftime("%HH")
     print(the_hour)
     if the_hour == cmd.dailyrepo:
-        print("xxxxxxxxxxxx")
         Z = logdetails.entries
         logdetails.entries = []
         body_message = ""
         for x in Z:
             if x.data != "" :
-                if x.data[0:7] == "Checking":
+                if x.data.startswith('Checking'):
                     body_message = body_message + x.data + "\n"
             #    
         config['region'] = tenancy_home_region

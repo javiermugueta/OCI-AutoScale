@@ -10,22 +10,23 @@
 #################################################################################################################
 # Application Command line parameters
 #
-#   -t config  - Config file section to use (tenancy profile)
-#   -ip        - Use Instance Principals for Authentication
-#   -dt        - Use Instance Principals with delegation token for cloud shell
-#   -a         - Action - All,Up,Down
-#   -tag       - Tag - Default Schedule
-#   -rg        - Filter on Region
-#   -ic        - include compartment ocid
-#   -ec        - exclude compartment ocid
-#   -ignrtime  - ignore region time zone
-#   -ignormysql- ignore mysql execution
-#   -printocid - print ocid of object
-#   -topic     - topic to sent summary
-#   -log       - send log output to OCI Logging service. Specify the Log OCID
-#   -loglevel  - LogLevel by command line
-#   -dailyrepo - Send daily repo via notifications at xxH hours (default -dailyrepo 21H)
-#   -h         - help
+#   -t config       - Config file section to use (tenancy profile)
+#   -ip             - Use Instance Principals for Authentication
+#   -dt             - Use Instance Principals with delegation token for cloud shell
+#   -a              - Action - All,Up,Down
+#   -tag            - Tag - Default Schedule
+#   -rg             - Filter on Region
+#   -ic             - include compartment ocid
+#   -ec             - exclude compartment ocid
+#   -ignrtime       - ignore region time zone
+#   -ignormysql     - ignore mysql execution
+#   -printocid      - print ocid of object
+#   -topic          - topic to sent summary
+#   -log            - send log output to OCI Logging service. Specify the Log OCID
+#   -loglevel       - LogLevel by command line
+#   -dailyrepo_n    - Send daily repo via notifications at xxH hours (default -dailyrepo_n 21H)
+#   -dailyrepo_m    - Send daily repo via notifications at xxH hours (default -dailyrepo_m 09H)
+#   -h              - help
 #
 #################################################################################################################
 import oci
@@ -1559,7 +1560,8 @@ parser.add_argument('-printocid', action='store_true', default=False, dest='prin
 parser.add_argument('-topic', default="", dest='topic', help='Topic OCID to send summary in home region')
 parser.add_argument('-log', default="", dest='log', help='Log OCID to send log output to')
 parser.add_argument('-loglevel', default="ERRORS", dest='log_level', help='Log level [ALL | ERRORS] ')
-parser.add_argument('-dailyrepo', default="21H", dest='dailyrepo', help='Send daily repo via notifications at xxH hours (default -dailyrepo 21H)')
+parser.add_argument('-dailyrepo_n', default="21H", dest='dailyrepo_n', help='Send daily repo via notifications at xxH hours (default 21H)')
+parser.add_argument('-dailyrepo_m', default="09H", dest='dailyrepo_m', help='Send daily repo via notifications at xxH hours (default 09H)')
 
 cmd = parser.parse_args()
 if cmd.action != "All" and cmd.action != "Down" and cmd.action != "Up":
@@ -1614,9 +1616,12 @@ try:
     if cmd.topic:
         MakeLog("Topic         : " + cmd.topic)
     
-    if cmd.dailyrepo:
-        MakeLog("Daily repo    : " + cmd.dailyrepo)
+    if cmd.dailyrepo_n:
+        MakeLog("Daily repo n  : " + cmd.dailyrepo_n)
    
+    if cmd.dailyrepo_m:
+        MakeLog("Daily repo m  : " + cmd.dailyrepo_m)
+
     if cmd.filter_region:
         MakeLog("Filter Region : " + cmd.filter_region)
 
@@ -1782,9 +1787,10 @@ if cmd.log:
 #
 # dailyrepo
 #
-if cmd.dailyrepo:
+if cmd.dailyrepo_m || cmd.dailyrepo_n:
     MakeLog("Daily repo is set at " + cmd.dailyrepo)
     the_hour = time.strftime("%HH")
+    print(the_hour)
     if the_hour == cmd.dailyrepo:
         MakeLog("It's the time for the daily repo")
         Z = logdetails.entries

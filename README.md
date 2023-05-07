@@ -4,6 +4,11 @@ Welcome to the Scheduled Auto Scaling Script for OCI (Oracle Cloud Infrastructur
 
 The **AutoScaleALL** script: A single Auto Scaling script for all OCI resources that support scaling up/down and power on/off operations.
 
+# Changes in this fork
+
+- Tested for OCI Logging and OCI Notifications
+- Only sends notifications when erros happen
+
 # NEW 
 - Support for changing the CPU and Memory Count for Compute Flex Shapes (WILL REBOOT THE INSTANCE!!)
 - Support for Nth day of the Month Scheuld (Like 1st saturday or 3rd Saturday)

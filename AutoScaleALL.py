@@ -1602,6 +1602,7 @@ try:
     MakeLog("Home Region   : " + tenancy_home_region)
     MakeLog("Action        : " + Action)
     MakeLog("Tag           : " + PredefinedTag)
+    MakeLog("Log Level     : " + LogLevel)
 
     if cmd.topic:
         MakeLog("Topic         : " + cmd.topic)

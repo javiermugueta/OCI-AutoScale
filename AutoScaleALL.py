@@ -1792,24 +1792,24 @@ if cmd.dailyrepo:
         logdetails.entries = []
         body_message = ""
         for x in Z:
-        if x.data != "" :
-            if x.data[=:7] == "Checking":
-                body_message = body_message + x.data + "\n"
-        #    
-        config['region'] = tenancy_home_region
-        signer.region = tenancy_home_region
-        ns = oci.ons.NotificationDataPlaneClient(config, signer=signer)
-        print(body_message)
-        Retry = True
-        while Retry:
-            try:
-                ns_response = ns.publish_message(cmd.topic, {"title": "Scaling Script ran across tenancy: {}".format(tenancy.name), "body": body_message})
-                Retry = False
-            except oci.exceptions.ServiceError as ns_response:
-                if ns_response.status == 429:
-                    MakeLog("Rate limit kicking in.. waiting {} seconds...".format(RateLimitDelay))
-                    time.sleep(RateLimitDelay)
-                else:
-                    MakeLog("Error ({}) publishing notification - {}".format(ns_response.status, ns_response.message))
+            if x.data != "" :
+                if x.data[=:7] == "Checking":
+                    body_message = body_message + x.data + "\n"
+            #    
+            config['region'] = tenancy_home_region
+            signer.region = tenancy_home_region
+            ns = oci.ons.NotificationDataPlaneClient(config, signer=signer)
+            print(body_message)
+            Retry = True
+            while Retry:
+                try:
+                    ns_response = ns.publish_message(cmd.topic, {"title": "Scaling Script ran across tenancy: {}".format(tenancy.name), "body": body_message})
                     Retry = False
+                except oci.exceptions.ServiceError as ns_response:
+                    if ns_response.status == 429:
+                        MakeLog("Rate limit kicking in.. waiting {} seconds...".format(RateLimitDelay))
+                        time.sleep(RateLimitDelay)
+                    else:
+                        MakeLog("Error ({}) publishing notification - {}".format(ns_response.status, ns_response.message))
+                        Retry = False
 #

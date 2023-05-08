@@ -1809,6 +1809,7 @@ if cmd.dailyrepo_m or cmd.dailyrepo_n:
         while Retry:
             try:
                 ns_response = ns.publish_message(cmd.topic, {"title": "Auto scaling daily repo at " + the_hour), "body": body_message})
+                MakeLog("Daily repo sent")
                 Retry = False
             except oci.exceptions.ServiceError as ns_response:
                 if ns_response.status == 429:

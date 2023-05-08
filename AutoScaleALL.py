@@ -1788,8 +1788,8 @@ if cmd.log:
 # dailyrepo
 #
 if cmd.dailyrepo_m or cmd.dailyrepo_n:
-    MakeLog("Daily repo is set at " + cmd.dailyrepo_m)
-    MakeLog("Daily repo is set at " + cmd.dailyrepo_n)
+    MakeLog("First daily repo is set at " + cmd.dailyrepo_m)
+    MakeLog("Last daily repo is set at " + cmd.dailyrepo_n)
     the_hour = time.strftime("%HH")
     print(the_hour)
     if the_hour == cmd.dailyrepo_n or the_hour == cmd.dailyrepo_m:
@@ -1808,7 +1808,7 @@ if cmd.dailyrepo_m or cmd.dailyrepo_n:
         Retry = True
         while Retry:
             try:
-                ns_response = ns.publish_message(cmd.topic, {"title": "Auto scaling daily repo".format(tenancy.name), "body": body_message})
+                ns_response = ns.publish_message(cmd.topic, {"title": "Auto scaling daily repo at " + the_hour), "body": body_message})
                 Retry = False
             except oci.exceptions.ServiceError as ns_response:
                 if ns_response.status == 429:

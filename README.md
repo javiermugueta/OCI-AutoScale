@@ -167,7 +167,7 @@ crontab -e
 ```
 
 ```
-57 * * * * python3 /home/opc/OCI-AutoScale/AutoScaleALL.py -a Down -printocid -tag Schedule  -topic ocid1.onstopic.oc1.eu-madrid-1.aaaaaaaaobhrwzowhv47l52qz2wmfognb4sqwhrp45wfom654itupuwbzeyq -log ocid1.log.oc1.eu-madrid-1.amaaaaaaijaigyiaaaannvez4ayvm7hqodnk2kfar7ewpegxwuiiqh3ashga-dailyrepo_n 22H -dailyrepo_m 09H  >> /home/opc/automation.log 2>&1
+57 * * * * python3 /home/opc/OCI-AutoScale/AutoScaleALL.py -a Down -printocid -tag Schedule  -topic ocid1.onstopic.oc1.eu-madrid-1.aaaaaaaaobhrwzowhv47l52qz2wmfognb4sqwhrp45wfom654itupuwbzeyq -log ocid1.log.oc1.eu-madrid-1.amaaaaaaijaigyiaaaannvez4ayvm7hqodnk2kfar7ewpegxwuiiqh3ashga -dailyrepo_n 22H -dailyrepo_m 09H  >> /home/opc/automation.log 2>&1
 01 * * * * python3 /home/opc/OCI-AutoScale/AutoScaleALL.py -a Up -printocid -tag Schedule  -topic ocid1.onstopic.oc1.eu-madrid-1.aaaaaaaaobhrwzowhv47l52qz2wmfognb4sqwhrp45wfom654itupuwbzeyq -log ocid1.log.oc1.eu-madrid-1.amaaaaaaijaigyiaaaannvez4ayvm7hqodnk2kfar7ewpegxwuiiqh3ashga -dailyrepo_n 22H -dailyrepo_m 09H  >> /home/opc/automation.log 2>&1
 ```
 
